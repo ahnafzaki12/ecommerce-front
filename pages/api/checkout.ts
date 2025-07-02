@@ -1,9 +1,10 @@
 import mongooseConnect from "@/lib/mongoose";
 import { Order } from "@/models/Order";
 import { Product } from "@/models/Product";
-import { url } from "inspector";
 import { NextApiRequest, NextApiResponse } from "next";
-const stripe = require('stripe')(process.env.STRIPE_SK);
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SK!);
 
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
@@ -19,7 +20,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     const uniqueIds = [...new Set(productsIds)];
     const productInfos = await Product.find({ _id: uniqueIds });
 
-    let line_items = [];
+    const line_items = [];
     for (const productId of uniqueIds) {
         const productInfo = productInfos.find(p => p._id.toString() === productId);
         const quantity = productsIds.filter((id: string) => id === productId).length;
