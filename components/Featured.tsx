@@ -15,7 +15,7 @@ export default function Featured({ product }: FeaturedProps) {
     }
 
     return (
-        <section className="relative bg-gradient-to-br from-gray-50 to-white py-24 px-6 lg:px-8 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-gray-50 to-white py-12 px-6 lg:px-8 overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 bg-grid-gray-100 opacity-20"></div>
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-50 to-purple-50 rounded-full blur-3xl opacity-30 -translate-y-32 translate-x-32"></div>
